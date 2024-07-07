@@ -9,4 +9,22 @@ module.exports = {
     clean: true,
     filename: './js/app.js',
   },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader', "postcss-loader"],
+      },
+      {
+        test: /\.ts$/,
+        include: path.resolve(__dirname, 'js'),
+        use: 'ts-loader',
+      },
+    ],
+  },
+  resolve: {
+    extensions: [
+      '.ts', '.js',
+    ],
+  },
 };

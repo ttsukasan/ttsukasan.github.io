@@ -1,30 +1,28 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   entry: {
-    app: './js/app.js',
+    app: './js/app.ts',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
-    filename: './js/app.js',
+    filename: './js/bundle.js',
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader', "postcss-loader"],
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
       {
-        test: /\.ts$/,
-        include: path.resolve(__dirname, 'js'),
+        test: /\.tsx?$/,
         use: 'ts-loader',
+        exclude: /node_modules/,
       },
     ],
   },
   resolve: {
-    extensions: [
-      '.ts', '.js',
-    ],
+    extensions: ['.tsx', '.ts', '.js'],
   },
-};
+}
